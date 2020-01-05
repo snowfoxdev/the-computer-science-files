@@ -72,3 +72,18 @@ x + y = z <= x <= y <= z = f
 
 (1)(2)(3)f
 ```
+
+Now, my analysis:
+
+* **Prefix**
+  * **Benefits:** In order to call the next anonymous function, one only has to append the next set of parentheses.
+  * **Costs:** Like postfix, it can be hard to infer that each set of parentheses calls the anonymous function returned by what is to the left of the parentheses.
+* **Left Infix**
+  * **Benefits:** Anonymous functions returning anonymous functions is easier to infer for infix.
+  * **Costs:** One has to add text to the beginning and end of an expression to call the next anonymous function. In addition, open-parentheses clusters ("(((((") show up, which is very unusual, as LISP-based languages usually only have close-parentheses clusters ("))))").
+* **Right Infix** Anonymous functions returning anonymous functions is easier to read in infix.
+  * **Benefits:** 
+  * **Costs:**
+* **Postifx**
+  * **Benefits:** 
+  * **Costs:**
