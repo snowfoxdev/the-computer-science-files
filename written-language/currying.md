@@ -77,7 +77,7 @@ This is a contrived example. Some examples are not so contrived. Please consider
 const clean = R.pipe(
   R.trim, // => `hello`
   R.toUpper, // => `HELLO`,
-  string => `${string} - count: ${string.length}`, // `HELLO - count: 5`,
+  string => `${string} - count: ${string.length}` // `HELLO - count: 5`,
 );
 
 clean(`      hello          `); // => `HELLO - count: 5`
@@ -93,6 +93,13 @@ const clean = (string) => {
 }
 ```
 
+Let us use a mental item counter. Each variable identifier and each operation recieve one tickmark:
+
+Currying: 3: `R.trim`, `R.toUpper`, ```string => `${string} - count: ${string.length}````
+Non-Currying: 5: `string`, `trim`, `toUpper`, `newString`, ```return `${string} - count: ${string.length}````
+
+Thus, if you believe in this type of mental counting, the Non-Currying way more more mentally taxing.
+
 ## Benefit and cost #3: readability
 
-I think most people would say that `celsiusToFahrenheit = pipe(mul(9/5), add(32))` is highly readable. 
+After becoming adapted to it, I think most people would say that composed functions are easier to read that regular functions because there are less mental items to keep up with. However, a function like `f(1)(2)(3)` can be difficult to read because one has to remember that `f(1)` returns a function that is run with `(2)` that returns a function that is run with `(3)`. This is even more difficult when not all arguments have been added yet. `f(1)(2)`, for example, because one might think that this returns a regular value when it really returns a function.
