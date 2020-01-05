@@ -102,4 +102,17 @@ Thus, if you believe in this type of mental counting, the Non-Currying way more 
 
 ## Benefit and cost #3: readability
 
-After becoming adapted to it, I think most people would say that composed functions are easier to read that regular functions because there are less mental items to keep up with. However, a function like `f(1)(2)(3)` can be difficult to read because one has to remember that `f(1)` returns a function that is run with `(2)` that returns a function that is run with `(3)`. This is even more difficult when not all arguments have been added yet. `f(1)(2)`, for example, because one might think that this returns a regular value when it really returns a function.
+After becoming adapted to it, I think most people would say that composed functions are easier to read that regular functions because there are less mental items to keep up with. However, a function like `f(1)(2)(3)` can be difficult to read because one has to remember that `f(1)` returns a function that is run with `(2)` that returns a function that is run with `(3)`. This is even more difficult when not all arguments have been added yet. Having `f(1)(2)`, for example, could be confusing because one might think that this returns a regular value when it really returns a function.
+
+Using infix function notation might fix this issue, though:
+
+```
+(((f 1) 2) 3) // => 6
+```
+
+Partial application:
+
+```
+(def x ((f 1) 2))
+(x 3) // => 6
+```
