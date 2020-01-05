@@ -31,3 +31,13 @@ Postfix: (x)f
 ```
 
 Almost all programmers use prefix (function) notation, but LISP-based programmers are familiar with infix. The question: what are the costs and benefits of each?
+
+## Prefix
+
+One benefit of prefix is how currying looks/works:
+
+```
+f = x => y => z => x + y + z
+
+f(1)(2)(3) // => 6
+```
